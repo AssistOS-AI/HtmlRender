@@ -1,0 +1,37 @@
+{
+  "applicationName":"HtmlRender",
+  "version": "0.0.1",
+  "entryPointComponent": "html-render",
+  "description": "Render HTML I guess",
+  "componentsDirPath": "web-components",
+  "components":[
+    {
+      "name": "html-render",
+      "presenterClassName": "HtmlRender",
+      "type": "pages"
+    }
+  ],
+  "services": [
+    {
+      "serviceName": "RoutingService",
+      "servicePath": "services/RoutingService.js"
+    }
+  ],
+  "manager": {
+    "path": "manager.js",
+    "name": "Manager"
+  },
+  "plugins": {
+    "abstract": [],
+    "paragraph": [
+      {
+        "tooltip": "Html Render",
+        "component": "html-render",
+        "icon": "assets/icons/html.svg",
+        "presenter": "HtmlRender",
+        "type": "embedded"
+      }
+    ]
+  }
+}
+
