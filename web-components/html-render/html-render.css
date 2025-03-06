@@ -1,94 +1,47 @@
-diagram-generator{
+
+html-render{
     display: block;
     width: 100%;
     background-color: var(--white);
     border-radius: 5px;
     padding: 20px;
 }
-.actions-section{
+
+.actions-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: none;
 }
-
-.image-2{
-    margin-left: 10px;
+label {
+    font-size: 14px;
+    font-weight: bold;
+    align-self: flex-start;
 }
-
-.text{
-    color: red;
-}
-
-.text-mermaid{
-    color:blue;
-}
-
-.edit-diagram{
-    margin-left: 10px;
-}
-
-.generate-code{
-    margin-left: 10px;
-}
-
-.download-code{
-    margin-left: 10px;
-}
-
-.edit-code{
-    margin-left: 10px;
-}
-
-#diagram{
-    margin-left: 10px;
-}
-
-#text-input-container {
-    margin-bottom: 16px;
-}
-
-#text-input-container-2 {
-    margin-bottom: 16px;
-}
-
-#code-input-container {
-    margin-bottom: 16px;
-}
-
-#diagram-text {
-    width: calc(100% - 100px);
-    height: 150px;
-    padding: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
+textarea {
+    width: 100%;
+    height: 120px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#diagram-text-2 {
-    width: calc(100% - 100px);
-    height: 150px;
+    border-radius: 5px;
     padding: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
+    font-size: 13px;
 }
-
-
-#code-text{
-    width: calc(100% - 100px);
-    height: 150px;
-    padding: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.general-button {
+    background-color: #66b3ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
 }
-
-#language-checkbox-container{
-    margin-bottom: 16px;
-}
-.paragraph-image{
-    width: 80%;
+.general-button:hover {
+    background-color: #3399ff;
 }
 
