@@ -30,6 +30,24 @@ export class HtmlRender {
             imageElement.src = await spaceModule.getImageURL(this.paragraphPresenter.paragraph.commands.image.id);
         }
 
+        const paragraphText = await documentModule.getParagraphText(assistOS.space.id,this.paragraphPresenter._document.id,this.paragraphPresenter.paragraph.id);
+
+        // console.log(paragraphText);
+        const paragraphTextCleaned = assistOS.UI.unsanitize(paragraphText);
+        // console.log(paragraphTextCleaned);
+
+        if(await this.containsValidHTML(paragraphTextCleaned) === true){
+            console.log("OK");
+            let htmlParagraph = this.element.querySelector(".html-code");
+            htmlParagraph.insertAdjacentHTML("afterbegin", paragraphTextCleaned);
+        }
+        else{
+           console.log("Invalid Code");
+        }
+
+
+
+
     }
     async insertImage(){
         await this.commandsEditor.insertAttachmentCommand("image");
@@ -40,17 +58,25 @@ export class HtmlRender {
         this.invalidate();
     }
 
-    async renderTheHTML(){
-        const text = document.getElementById("codeInput").value;
+    async containsValidHTML(text) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, "text/html");
+
         if (doc.querySelector("parsererror")) {
-            console.log("Cod prost");
+            return false;
         }
+
+        const styleElements = doc.querySelectorAll("style");
+        for (const styleEl of styleElements) {
+            const cssText = styleEl.textContent;
+            if (!this.areCurlyBracesBalanced(cssText)) {
+                return false;
+            }
+        }
+
         const tagStack = [];
         const tagRegex = /<\/?([a-zA-Z0-9]+)[^>]*>/g;
         let match;
-
         const selfClosingTags = new Set([
             "area", "base", "br", "col", "embed", "hr", "img", "input",
             "keygen", "link", "meta", "param", "source", "track", "wbr"
@@ -60,36 +86,27 @@ export class HtmlRender {
             const tagName = match[1].toLowerCase();
 
             if (!match[0].startsWith("</")) {
-
                 if (!selfClosingTags.has(tagName)) {
                     tagStack.push(tagName);
                 }
             } else {
-
                 if (tagStack.length === 0 || tagStack[tagStack.length - 1] !== tagName) {
-                    console.log("Cod prost");
+                    return false;
                 }
                 tagStack.pop();
             }
         }
 
-        if(tagStack.length === 0){
-
-            console.log("Cod bun");
-            this.paragraphPresenter.paragraph.text = "Te pup pa pa";
-
-            let textElement = this.paragraphPresenter.element.querySelector(".paragraph-text");
-
-            let pureText = doc.body.textContent;
-            textElement.innerText = pureText;
-
-            await documentModule.updateParagraphText(assistOS.space.id, this.paragraphPresenter._document.id,  this.paragraphPresenter.paragraph.id, pureText);
-
-        }
-        else{
-            console.log("Cod prost");
-        }
-
+        return tagStack.length === 0;
     }
 
+    areCurlyBracesBalanced(cssText) {
+        let balance = 0;
+        for (let char of cssText) {
+            if (char === '{') balance++;
+            else if (char === '}') balance--;
+            if (balance < 0) return false;
+        }
+        return balance === 0;
+    }
 }
