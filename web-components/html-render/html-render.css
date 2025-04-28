@@ -7,6 +7,25 @@ html-render{
     padding: 20px;
 }
 
+.html-code {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.html-output{
+    max-width: 30%;
+}
+
+.render-message {
+    font-size: 1.1em;
+    color: #444;
+    margin: 0;
+}
+.button-mic{
+    max-width: 20%;
+}
+
 .actions-section {
     display: flex;
     flex-direction: column;
@@ -45,3 +64,116 @@ textarea {
     background-color: #3399ff;
 }
 
+
+.medium-editor-toolbar {
+    background-color: #2a2f36;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    z-index: 2000;
+    /* Font modern sans-serif */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    overflow: hidden;
+}
+
+.medium-editor-toolbar ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: stretch;
+}
+
+.medium-editor-toolbar li {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid #424853;
+}
+
+.medium-editor-toolbar li:last-child {
+    border-right: none;
+}
+
+.medium-editor-toolbar li button {
+    display: block;
+    flex-grow: 1;
+    min-width: 46px;
+    height: 40px;
+    padding: 0 12px;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: #c8ccd4;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    cursor: pointer;
+}
+
+.medium-editor-toolbar li button:hover {
+    background-color: #383e47;
+    color: #ffffff;
+}
+
+
+.medium-editor-toolbar li .medium-editor-button-active {
+    background-color: transparent;
+    color: #ffcc00;
+
+}
+
+.medium-editor-toolbar-anchor-preview {
+    background: #2a2f36;
+    border-color: #2a2f36;
+    width: 14px;
+    height: 14px;
+}
+
+
+.medium-editor-toolbar-form {
+    background: #2a2f36;
+    border-radius: 6px;
+    padding: 12px 15px;
+    color: #c8ccd4;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.medium-editor-toolbar-form .medium-editor-toolbar-input {
+    flex-grow: 1;
+    background: #383e47;
+    border: 1px solid #505662;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #ffffff;
+    height: 34px;
+    padding: 6px 12px;
+    margin-right: 12px;
+    font-size: 13px;
+}
+
+.medium-editor-toolbar-form .medium-editor-toolbar-input::placeholder {
+    color: #8a919f;
+}
+
+.medium-editor-toolbar-form a {
+    color: #4d9fff;
+    text-decoration: none;
+    padding: 6px 10px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.medium-editor-toolbar-form a:hover {
+    background-color: #383e47;
+    color: #ffffff;
+}
